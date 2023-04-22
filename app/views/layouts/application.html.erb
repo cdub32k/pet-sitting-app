@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PetBookingApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= yield :head %> 
+  </head>
+
+  <body>
+    <header>
+      <div class="cover bg-left bg-center-l">
+        <div class="bg-black-80">
+          <nav class="w-100"> 
+            <div class="dtc pa3 pr0">
+              <a href="/" class="dib w3 h3 grow-large border-box">
+                <%= image_tag("logo.jpg", class: "w3 h3 br-100") %>
+              </a>
+            </div>
+            <div class="dtc v-mid tl pa3 pa-l0 pl0">
+              <a class="f3 fw4 no-underline white-70 dn dib-ns pv2 ph3" href="/" >The Pet Sitters</a> 
+            </div>
+            <div class="dtc v-mid tr pa3">
+              <%= link_to 'Book Now', new_booking_path, class: "f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" %>
+              <%= link_to 'List Bookings (admins only)', admin_list_bookings_path, class: "f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" %>
+
+            </div>
+          </nav> 
+        </div>
+      </div> 
+    </header>
+    <%= yield %>
+    <footer class="pv4 ph3 ph5-m ph6-l mid-gray">
+      <small class="f6 db tc">© 2023 <b class="ttu">Pet Sitters Inc.</b>., All Rights Reserved</small>
+      <div class="tc mt3">
+        <a href="/language/" title="Language" class="f6 dib ph2 link mid-gray dim">Language</a>
+        <a href="/terms/"    title="Terms" class="f6 dib ph2 link mid-gray dim">Terms of Use</a>
+        <a href="/privacy/"  title="Privacy" class="f6 dib ph2 link mid-gray dim">Privacy</a>
+      </div>
+    </footer>
+  </body>
+</html>

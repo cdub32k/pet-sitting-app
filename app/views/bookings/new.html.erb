@@ -1,0 +1,34 @@
+<main class="pa3 tc flex flex-column items-center">
+<h1 class="f3 f2-m f1-l fw2 black-90 mv3">
+  New Booking
+</h1>
+<%= form_with model: @booking,
+              url: create_booking_path,
+              method: :post,
+              local: true,
+              html: { id: "booking-form", class: "booking-form black-80 w50" } do |f| %>
+  <fieldset className="cf bn ma0 pa0">
+    <div class="form-group mb4 tl">
+      <%= f.label :owner_first_name, "Owner First Name:", class: "db f6 mb2" %>
+      <%= f.text_field :owner_first_name, required: true, class: "pa2 input-reset barequired: true,  bg-transparent w-100 measure mb3" %>
+      <%= f.label :owner_last_name, "Owner Last Name:", class: "db f6 mb2" %>
+      <%= f.text_field :owner_last_name, required: true, class: "pa2 input-reset ba bg-transparent w-100 measure" %>
+    </div>
+    <div class="form-group mb4 tl">
+    <%= f.label :pet_name, "Pet Name:", class: "db f6 mb2" %>
+      <%= f.text_field :pet_name, required: true, class: "pa2 input-reset ba bg-transparent w-100 measure mb3" %>
+      <%= f.label :pet_type_id, "Pet Type:", class: "db f6 mb2" %>
+      <%= f.collection_select :pet_type_id, PetType.all, :id, :name, required: true, class: "classic mb3" %>
+    </div>
+    <div class="form-group mb4 tl">
+      <%= f.label :duration, "Appointment Length (hours):", class: "db f6 mb2" %>
+      <%= f.number_field :duration, required: true, max: 8, min: 2, class: "pa2 input-reset ba bg-transparent w-100 measure mb3" %>
+      <%= f.label :date, "Date and Time:", class: "db f6 mb2 mb3" %>
+      <%= f.datetime_field :date, required: true %>
+    </div>
+    <h3 class="db mb5 tl">Total Price: <span id="total-price">N/A</span></h3>
+    <%= f.submit disabled: true, class: "submit-btn-disabled f6 link br3 ph3 pv2 mb2 dib white hover" %>
+  </fieldset>
+<% end %>
+</main>
+<%= javascript_include_tag "custom/new_booking.js" %>
