@@ -24,7 +24,7 @@
       <%= f.label :duration, "Appointment Length (hours):", class: "db f6 mb2" %>
       <%= f.number_field :duration, required: true, max: 8, min: 2, class: "pa2 input-reset ba bg-transparent w-100 measure mb3" %>
       <%= f.label :date, "Date and Time:", class: "db f6 mb2 mb3" %>
-      <%= f.datetime_field :date, required: true %>
+      <%= f.datetime_field :date, required: true, min: (Time.new  + 1*60*60).strftime("%Y-%m-%dT%H:%M") %>
     </div>
     <h3 class="db mb5 tl">Total Price: <span id="total-price">N/A</span></h3>
     <%= f.submit disabled: true, class: "submit-btn-disabled f6 link br3 ph3 pv2 mb2 dib white hover" %>

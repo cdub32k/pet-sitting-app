@@ -1,14 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe "New Bookings", type: :system, js: true  do
+RSpec.describe "List Bookings", type: :system, js: true  do
   before do
-    driven_by(:rack_test)
+    driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
   end
 
   it "should display a message if there are no bookings" do
     Booking.destroy_all
 
     visit admin_list_bookings_path
+    expect(page).to have_content("All Bookings")
     expect(page).to have_content("There are no bookings scheduled at this time.")
   end
 
@@ -35,6 +36,7 @@ RSpec.describe "New Bookings", type: :system, js: true  do
 
     visit admin_list_bookings_path
 
+    expect(page).to have_content("All Bookings")
     expect(page).to have_content("Owner")
     expect(page).to have_content("Pet Name")
     expect(page).to have_content("Pet Type")

@@ -1,0 +1,6 @@
+dog:
+  id: 1
+  name: "Dog"
+cat:
+  id: 2
+  name: "Cat"

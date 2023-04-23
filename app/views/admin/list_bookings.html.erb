@@ -2,30 +2,30 @@
   <h1 class="f3 f2-m f1-l fw2 black-90 mv3">
     All Bookings
   </h1>
-  <table class="f6 w-100 mw8">
-    <tr>
-      <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Owner</th>
-      <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Pet Name</th>
-      <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Pet Type</th>
-      <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Booking Duration</th>
-      <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Booking Date</th>
-      <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Price</th>
-    </tr>
-    <% if @bookings.any? %>
-      <tbody class="lh-copy">
-      <% @bookings.each do |booking| %>
-        <tr>
-          <td class="pv3 pr3 bb b--black-20"><%= booking.owner_first_name %> <%= booking.owner_last_name %></td>
-          <td class="pv3 pr3 bb b--black-20"><%= booking.pet_name %></td>
-          <td class="pv3 pr3 bb b--black-20"><%= booking.pet_type.name %></td>
-          <td class="pv3 pr3 bb b--black-20"><%= booking.duration %> hours</td>
-          <td class="pv3 pr3 bb b--black-20"><%= booking.date.strftime("%B %e, %Y at %l:%M%P") %></td>
-          <td class="pv3 pr3 bb b--black-20"><%= number_to_currency(booking.price, :unit => "$") %></td>
-        </tr>
-      <% end %>
+  <% if @bookings.any? %>
+    <table class="f6 w-100 mw8">
+      <tr>
+        <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Owner</th>
+        <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Pet Name</th>
+        <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Pet Type</th>
+        <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Booking Duration</th>
+        <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Booking Date</th>
+        <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Price</th>
+      </tr>
+        <tbody class="lh-copy">
+        <% @bookings.each do |booking| %>
+          <tr>
+            <td class="pv3 pr3 bb b--black-20"><%= booking.owner_first_name %> <%= booking.owner_last_name %></td>
+            <td class="pv3 pr3 bb b--black-20"><%= booking.pet_name %></td>
+            <td class="pv3 pr3 bb b--black-20"><%= booking.pet_type.name %></td>
+            <td class="pv3 pr3 bb b--black-20"><%= booking.duration %> hours</td>
+            <td class="pv3 pr3 bb b--black-20"><%= booking.date.strftime("%B %e, %Y at %l:%M%P") %></td>
+            <td class="pv3 pr3 bb b--black-20"><%= number_to_currency(booking.price, :unit => "$") %></td>
+          </tr>
+        <% end %>
       </tbody>
-    <% else %>
-      <tbody><tr><td>There are no bookings scheduled at this time.</td></tr></tbody>
-    <% end %>
-  </table>
+    </table>
+  <% else %>
+    <div>There are no bookings scheduled at this time.</div>
+  <% end %>
 </main>
